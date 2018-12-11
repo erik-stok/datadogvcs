@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataDogDashboard.cs" />
+    <Compile Remove="DataDogDashboardItem.cs" />
+    <Compile Remove="DataDogDashboardList.cs" />
+    <Compile Remove="DataDogGateway.cs" />
+    <Compile Remove="IDataDogGateway.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SimpleInjector" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataDog\DataDog.csproj" />
+  </ItemGroup>
+
+</Project>
