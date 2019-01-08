@@ -11,11 +11,13 @@ Either build the application yourself or download the latest build to be able to
 
 ## How to use
 
-In order to put your dashboards into version control, put the dashboard you would like to have versioned into a single [dashboard list](https://www.datadoghq.com/blog/dashboard-lists). That dashboard list is used by DataDog VCS to determine what dashboard to pull to your local machine for version control.
+In order to put your dashboards into version control, put the dashboard you would like to have versioned into a single [dashboard list](https://www.datadoghq.com/blog/dashboard-lists). That dashboard list is used by DataDog VCS to determine what dashboards to pull to your local machine for version control.
+
+Then synchronize the local copy of the dashboards with your version control system as you see fit.
 
 DataDog VCS is a command line tool. With the arguments of the command line tool, you can instruct it to perform several operations.
 
-Use **dotnet ddvcs.dll ApiKey:\<DataDog Api key\> \[ValidateKey\] \[ApplicationKey:\<DataDog Application key\>\] \[List\] \[Dashboard:\<\Dashboard to use>\] \[Content\] \[Pull\] \[Folder:\<Folder to use\>]**
+Use **dotnet ddvcs.dll ApiKey:\<DataDog Api key\> \[ValidateKey\] \[ApplicationKey:\<DataDog Application key\>\] \[List\] \[Dashboard:\<Dashboard to use>\] \[Content\] \[Pull\] \[Folder:\<Folder to use\>]**
 
 | Argument       | Meaning                                                      |
 | -------------- | ------------------------------------------------------------ |
