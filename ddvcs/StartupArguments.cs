@@ -58,7 +58,7 @@ namespace ddvcs
                 case "a":
                     ApiKey = argumentValue;
                     break;
-                case "appkey":
+                case "applicationkey":
                 case "k":
                     AppKey = argumentValue;
                     break;
@@ -92,62 +92,64 @@ namespace ddvcs
             }
         }
         
-        public void ReadArguments(string[] arguments)
+        public string ReadArguments(string[] arguments)
         {
             foreach (var argument in arguments)
             {
                 ReadArgument(argument);
             }
 
-            if (arguments.Length == 0)
+            if (ShouldPullDashboards && (Folder == ""))
             {
-                return;
+                Folder = ".";
             }
 
             if (ShouldValidateKey && (ShouldListDashboardLists || ShouldListDashboards || ShouldPullDashboards))
             {
-                throw new Exception("Cannot validate key with any other commands");
+                return "Cannot validate key with any other commands";
             }
 
             if (ShouldValidateKey && (ApiKey == ""))
             {
-                throw new Exception("Cannot validate key without any api key");
+                return "Cannot validate key without any api key";
             }
 
             if (!ShouldValidateKey && ((ApiKey == "") || (AppKey == "")))
             {
-                throw new Exception("Cannot perform commands without Api key and Application key");
+                return "Cannot perform commands without Api key and Application key";
             }
 
             if (ShouldListDashboardLists && (ShouldValidateKey || ShouldListDashboards || ShouldPullDashboards))
             {
-                throw new Exception("Cannot list dashboard lists with any other commands");
+                return "Cannot list dashboard lists with any other commands";
             }
 
             if (ShouldListDashboards && (ShouldValidateKey || ShouldListDashboardLists || ShouldPullDashboards))
             {
-                throw new Exception("Cannot list dashboard list content with any other commands");
+                return "Cannot list dashboard list content with any other commands";
             }
 
             if (ShouldPullDashboards && (ShouldValidateKey || ShouldListDashboardLists || ShouldListDashboards))
             {
-                throw new Exception("Cannot pull dashboard list with any other commands");
+                return "Cannot pull dashboard list with any other commands";
             }
 
             if (ShouldListDashboards && (DashboardList == ""))
             {
-                throw new Exception("Cannot list dashboard list content if no dashboard list is specified");
+                return "Cannot list dashboard list content if no dashboard list is specified";
             }
 
             if (ShouldPullDashboards && (DashboardList == ""))
             {
-                throw new Exception("Cannot pull dashboard list if no dashboard list is specified");
+                return "Cannot pull dashboard list if no dashboard list is specified";
             }
 
-            if (ShouldPullDashboards && (Folder == ""))
+            if (ShouldValidateKey || ShouldListDashboardLists || ShouldListDashboards || ShouldPullDashboards)
             {
-                throw new Exception("Cannot pull dashboard list if no folder is specified");
+                return "";
             }
+
+            return "Please supply a command";
         }
     }
 }

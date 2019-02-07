@@ -6,12 +6,39 @@ namespace ddvcs
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             var startupArguments = new StartupArguments();
-            startupArguments.ReadArguments(args);
+            var startupError = startupArguments.ReadArguments(args);
 
             var container = new Container();
+
+            if (startupError != "")
+            {
+                container.GetInstance<OutputWriter>().Write(
+                    "DataDog VCS 0.1\n" +
+                    "\n" +
+                    startupError +
+                    "\n\n" +
+                    "Usage:\n" +
+                    "\n" +
+                    "ddvcs.dll ApiKey:<DataDog Api key> [ValidateKey] [ApplicationKey:<DataDog application key>] " +
+                    "[List] [Dashboard:<Dashboard to use>] [Content] [Pull] [Folder:<Folder to use for a pull>]\n" +
+                    "\n" +
+                    "Arguments:\n" +
+                    "\n" +
+                    "ApiKey:         Sets the Api key to use when connecting to DataDog.\n" +
+                    "ValidateKey:    Invokes the DataDag Api to validate the diven Api key.\n" +
+                    "ApplicationKey: Sets the Application key to use when connecting to DataDog.\n" +
+                    "List:           Shows a list of dashboard lists that can be used.\n" +
+                    "DashboardList:  Sets the dashboard list a 'Content' or 'Pull' operation will be performed on.\n" +
+                    "Content:        Shows the dashboards in the dashboard list specified.\n" +
+                    "Pull:           Pulls the dashboard list specified to the given folder.\n" +
+                    "Folder:         Folder to pull the dashboard of the list to as files.\n");
+
+                return -1;
+            }
+
             var bootstrapper = new Bootstrapper();
             bootstrapper.Register(container, startupArguments.ApiKey, startupArguments.AppKey, startupArguments.Folder);
 
@@ -35,27 +62,7 @@ namespace ddvcs
                 container.GetInstance<PullDashboardsUseCase>().Execute(startupArguments.DashboardList);
             }
 
-            if (args.Length == 0)
-            {
-                container.GetInstance<OutputWriter>().Write(
-                    "DataDog VCS 0.1\n" +
-                    "\n" +
-                    "Usage:\n" +
-                    "\n" +
-                    "ddvcs.dll ApiKey:<DataDog Api key> [ValidateKey] [ApplicationKey:<DataDog application key>] " +
-                    "[List] [Dashboard:<Dashboard to use>] [Content] [Pull] [Folder:<Folder to use for a pull>]\n" +
-                    "\n" +
-                    "Arguments:\n" +
-                    "\n" +
-                    "ApiKey:         Sets the Api key to use when connecting to DataDog.\n" +
-                    "ValidateKey:    Invokes the DataDag Api to validate the diven Api key.\n" +
-                    "ApplicationKey: Sets the Application key to use when connecting to DataDog.\n" +
-                    "List:           Shows a list of dashboard lists that can be used.\n" +
-                    "Dashboard:      Sets the dashboard a 'Content' or 'Pull' operation will be performed on.\n" +
-                    "Content:        Shows the dashboards in the dashboard list specified.\n" +
-                    "Pull:           Pulls the dashboard list specified to the given folder.\n" +
-                    "Folder:         Folder to pull the dashboard of the list to as files.\n");
-            }
+            return 0;
         }
     }
 }

@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ddvcs", "ddvcs\ddvcs.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ddvcsTest", "ddvcsTest\ddvcsTest.csproj", "{86E17765-2DF5-4505-B162-3D8F5A708DD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataDog", "DataDog\DataDog.csproj", "{E40B6F18-6851-4BBD-940B-73028482C9FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataDog", "DataDog\DataDog.csproj", "{E40B6F18-6851-4BBD-940B-73028482C9FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5C7C29D5-DADB-49AB-BBA3-1F4463FBDC15}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
