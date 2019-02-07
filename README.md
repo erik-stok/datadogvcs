@@ -17,17 +17,17 @@ Then synchronize the local copy of the dashboards with your version control syst
 
 DataDog VCS is a command line tool. With the arguments of the command line tool, you can instruct it to perform several operations.
 
-Use **dotnet ddvcs.dll ApiKey:\<DataDog Api key\> \[ValidateKey\] \[AppKey:\<DataDog Application key\>\] \[List\] \[Dashboard:\<Dashboard to use>\] \[Content\] \[Pull\] \[Folder:\<Folder to use\>]**
+Use **dotnet ddvcs.dll ApiKey:\<DataDog Api key\> \[ValidateKey\] \[ApplicationKey:\<DataDog Application key\>\] \[List\] \[Dashboard:\<Dashboard to use>\] \[Content\] \[Pull\] \[Folder:\<Folder to use\>]**
 
 | Argument       | Meaning                                                      |
 | -------------- | ------------------------------------------------------------ |
 | ApiKey         | The Api key to connect to DataDog via the API.               |
 | ValidateKey    | Instruction to validate of the specified DataDag Api key can connect via the Api. |
-| AppKey         | The application key to use in combination with the Api key in order to perform operations. Each operation other than ValidateKey requires both the ApiKey and the ApplicationKey argument. |
+| ApplicationKey | The application key to use in combination with the Api key in order to perform operations. Each operation other than ValidateKey requires both the ApiKey and the ApplicationKey argument. |
 | List           | List the dashboard lists that can be operated on.            |
 | DashboardList  | Selects a dashboard list by its name for a content scan or a pull. |
 | Content        | Scan the dashboards in the given dashboard list.             |
 | Pull           | Pulls the given dashboard list into the given folder.        |
-| Folder         | When performing a pull of dashboard definitions, this folder will receive the files. |
+| Folder         | When performing a pull of dashboard definitions, this folder will receive the files. A pull with no folder specified pulls into current folder. |
 
 
