@@ -11,7 +11,7 @@ namespace DataDog
         private readonly string _appKey;
         private readonly RestClient _restClient;
 
-        private const string BaseUri = "https://api.datadoghq.com/api/v1/";
+        private const string BaseUri = "https://api.datadoghq.eu/api/v1/";
 
         private const string ApiKeyParameter = "api_key";
         private const string AppKeyParameter = "application_key";
