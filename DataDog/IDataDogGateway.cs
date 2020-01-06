@@ -11,6 +11,6 @@ namespace DataDog
 
         IReadOnlyCollection<DataDogDashboard> GetDashboardListItems(ulong dashboardListId);
 
-        DataDogDashboardContent GetDasbboardContent(ulong dashboardId, string dashboardType);
+        DataDogDashboardContent GetDashboardContent(ulong dashboardId, string dashboardType);
     }
 }

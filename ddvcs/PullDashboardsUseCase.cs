@@ -31,7 +31,7 @@ namespace ddvcs
 
                 foreach (var dashboardListItem in dashboardListItems)
                 {
-                    dashboardContents.Add(_dataDogGateway.GetDasbboardContent(dashboardListItem.Id, dashboardListItem.Type));
+                    dashboardContents.Add(_dataDogGateway.GetDashboardContent(dashboardListItem.Id, dashboardListItem.Type));
                 }
 
                 _localDashboardListDatastore.Clear();

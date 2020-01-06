@@ -17,13 +17,14 @@ Then synchronize the local copy of the dashboards with your version control syst
 
 DataDog VCS is a command line tool. With the arguments of the command line tool, you can instruct it to perform several operations.
 
-Use **dotnet ddvcs.dll ApiKey:\<DataDog Api key\> \[ValidateKey\] \[ApplicationKey:\<DataDog Application key\>\] \[List\] \[Dashboard:\<Dashboard to use>\] \[Content\] \[Pull\] \[Folder:\<Folder to use\>]**
+Use **dotnet ddvcs.dll ApiKey:\<DataDog Api key\> \[ValidateKey\] \[ApplicationKey:\<DataDog Application key\>\] \[Uri:\<DataDog API uri\>\] \[List\] \[Dashboard:\<Dashboard to use>\] \[Content\] \[Pull\] \[Folder:\<Folder to use\>]**
 
 | Argument       | Meaning                                                      |
 | -------------- | ------------------------------------------------------------ |
 | ApiKey         | The Api key to connect to DataDog via the API.               |
 | ValidateKey    | Instruction to validate of the specified DataDag Api key can connect via the Api. |
 | ApplicationKey | The application key to use in combination with the Api key in order to perform operations. Each operation other than ValidateKey requires both the ApiKey and the ApplicationKey argument. |
+| Uri            | The uri to the datadog API to use. Defaults to https://api.datadoghq.com/api/v1/ |
 | List           | List the dashboard lists that can be operated on.            |
 | DashboardList  | Selects a dashboard list by its name for a content scan or a pull. |
 | Content        | Scan the dashboards in the given dashboard list.             |

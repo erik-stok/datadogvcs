@@ -7,11 +7,12 @@ namespace DataDog
 {
     public class DataDogGateway : IDataDogGateway
     {
+        private readonly string _baseUri;
         private readonly string _apiKey;
         private readonly string _appKey;
         private readonly RestClient _restClient;
 
-        private const string BaseUri = "https://api.datadoghq.eu/api/v1/";
+        private const string DefaultBaseUri = "https://api.datadoghq.com/api/v1/";
 
         private const string ApiKeyParameter = "api_key";
         private const string AppKeyParameter = "application_key";
@@ -22,8 +23,17 @@ namespace DataDog
         private const string ScreenDashboardContentResource = "screen/{0}";
         private const string TimeDashboardContentResource = "dash/{0}";
 
-        public DataDogGateway(string apiKey, string appKey)
+        public DataDogGateway(string apiKey, string appKey, string baseUri)
         {
+            if (baseUri != "")
+            {
+                _baseUri = baseUri;
+            }
+            else
+            {
+                _baseUri = DefaultBaseUri;
+            }
+
             _apiKey = apiKey;
             _appKey = appKey;
 
@@ -32,7 +42,7 @@ namespace DataDog
 
         private RestClient CreateRestClient()
         {
-            var restClient = new RestClient(BaseUri);
+            var restClient = new RestClient(_baseUri);
 
             var deserializer = NewtonsoftJsonSerializer.Default;
 
@@ -95,7 +105,7 @@ namespace DataDog
             return new List<DataDogDashboard>();
         }
 
-        public DataDogDashboardContent GetDasbboardContent(ulong dashboardId, string dashboardType)
+        public DataDogDashboardContent GetDashboardContent(ulong dashboardId, string dashboardType)
         {
             RestRequest request;
 

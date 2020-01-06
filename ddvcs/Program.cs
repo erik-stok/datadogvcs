@@ -40,7 +40,7 @@ namespace ddvcs
             }
 
             var bootstrapper = new Bootstrapper();
-            bootstrapper.Register(container, startupArguments.ApiKey, startupArguments.AppKey, startupArguments.Folder);
+            bootstrapper.Register(container, startupArguments.ApiKey, startupArguments.AppKey, startupArguments.BaseUri, startupArguments.Folder);
 
             if (startupArguments.ShouldValidateKey)
             {

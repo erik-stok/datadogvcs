@@ -8,6 +8,7 @@ namespace ddvcs
 {
     public class StartupArguments
     {
+        public string BaseUri { get; set; }
         public string ApiKey { get; set; }
         public string AppKey { get; set; }
         public string Folder { get; set; }
@@ -19,6 +20,7 @@ namespace ddvcs
 
         public StartupArguments()
         {
+            BaseUri = "";
             ApiKey = "";
             AppKey = "";
             Folder = "";
@@ -61,6 +63,10 @@ namespace ddvcs
                 case "applicationkey":
                 case "k":
                     AppKey = argumentValue;
+                    break;
+                case "uri":
+                case "u":
+                    BaseUri = argumentValue;
                     break;
                 case "folder":
                 case "f":
