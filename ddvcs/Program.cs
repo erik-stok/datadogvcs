@@ -28,7 +28,7 @@ namespace ddvcs
                     "Arguments:\n" +
                     "\n" +
                     "ApiKey:         Sets the Api key to use when connecting to DataDog.\n" +
-                    "ValidateKey:    Invokes the DataDag Api to validate the diven Api key.\n" +
+                    "ValidateKey:    Invokes the DataDag Api to validate the given Api key.\n" +
                     "ApplicationKey: Sets the Application key to use when connecting to DataDog.\n" +
                     "List:           Shows a list of dashboard lists that can be used.\n" +
                     "DashboardList:  Sets the dashboard list a 'Content' or 'Pull' operation will be performed on.\n" +
